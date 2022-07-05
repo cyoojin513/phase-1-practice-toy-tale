@@ -13,3 +13,27 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+
+document.addEventListener("DOMContentLoaded", function() {
+  fetchToys()
+})
+
+function fetchToys() {
+  return fetch('http://localhost:3000/toys')
+  .then(resp => resp.json())
+  .then((json) => createNewToy(json))
+}
+
+function createNewToy(toys) {
+  const newToy = document.getElementById("toy-collection")
+  toys.forEach(toy => {
+    const h2 = document.createElement('h2')
+    h2.innerHTML = toy.name
+    const img = document.createElement('img')
+    img.innerHTML = toy.image
+    const p = document.createElement('p')
+    p.innerHTML = toy.likes
+    const btn = document.createElement('button')
+  newToy.appendChild(h2)
+  })
+}
