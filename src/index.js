@@ -27,13 +27,19 @@ function fetchToys() {
 function createNewToy(toys) {
   const newToy = document.getElementById("toy-collection")
   toys.forEach(toy => {
+    const divCard = document.createElement("div")
+    divCard.className = "card"
     const h2 = document.createElement('h2')
     h2.innerHTML = toy.name
     const img = document.createElement('img')
-    img.innerHTML = toy.image
+    img.src = `${toy.image}`
+    img.className = "toy-avatar"
     const p = document.createElement('p')
-    p.innerHTML = toy.likes
+    p.innerHTML = `${toy.likes}`
     const btn = document.createElement('button')
-  newToy.appendChild(h2)
+
+    newToy.append(divCard)
+    divCard.appendChild(h2, img, p, btn)
+
   })
 }
